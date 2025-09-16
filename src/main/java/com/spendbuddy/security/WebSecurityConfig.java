@@ -58,16 +58,22 @@ public class WebSecurityConfig {
 		return new BCryptPasswordEncoder();
 	}
 
-	// ADD THIS NEW BEAN TO CONFIGURE CORS
+	// CORS CONFIGURATION - ALLOW ALL ORIGINS
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-		// Set the allowed origins for your frontend
-		configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:3000", "http://localhost:3000"));
-		// Set the allowed HTTP methods
-		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-		// IMPORTANT: Set the allowed headers, including "Authorization" for JWT
-		configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Cache-Control"));
+
+		// Allow all origins - no restrictions
+		configuration.addAllowedOriginPattern("*");
+
+		// Allow all HTTP methods
+		configuration.addAllowedMethod("*");
+
+		// Allow all headers
+		configuration.addAllowedHeader("*");
+
+		// Allow credentials (important for JWT authentication)
+		configuration.setAllowCredentials(true);
 
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		// Apply this configuration to all paths
