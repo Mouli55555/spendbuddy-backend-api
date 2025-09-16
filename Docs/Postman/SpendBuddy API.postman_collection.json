@@ -1,0 +1,501 @@
+{
+	"info": {
+		"_postman_id": "08a98a1d-bf94-4a67-bf78-76922bde12f6",
+		"name": "SpendBuddy API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45533911",
+		"_collection_link": "https://balaji-8736055.postman.co/workspace/Balaji's-Workspace~bdd2bdaf-6952-4cdc-8965-ed783868cfd9/collection/45533911-08a98a1d-bf94-4a67-bf78-76922bde12f6?action=share&source=collection_link&creator=45533911"
+	},
+	"item": [
+		{
+			"name": "SignUp",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"randomuser\",\r\n  \"email\": \"random@gmail.com\",\r\n  \"password\": \"123456\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignIn",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"randomuser\",\r\n  \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCategory",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Travel\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListCategory",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SubCategory",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"cars\",\r\n  \"categoryId\": 3\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/subcategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"subcategory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PaymentType",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"UPI\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/paymenttype",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"paymenttype"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Payment Type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/paymenttype",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"paymenttype"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Expense",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\r\n    \"amount\": 100,\r\n    \"expenseDescription\": \"Cab Ride\",\r\n    \"paymentId\": 3,\r\n    \"categoryId\": 3,\r\n    \"subCategoryId\": 2,\r\n    \"expenseDate\": \"2025-06-23\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/api/expense",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"expense"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User Expense",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/expense",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"expense"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User Expense by Date Filter",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/paymenttype?fromDate=2025-06-23&toDate=2025-06-23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"paymenttype"
+					],
+					"query": [
+						{
+							"key": "fromDate",
+							"value": "2025-06-23"
+						},
+						{
+							"key": "toDate",
+							"value": "2025-06-23"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User Current Month Expense",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/expense/currentmonth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"expense",
+						"currentmonth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User Expense By Category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/expense/category/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"expense",
+						"category",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User Expense By Category and Date Filter",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/expense/category/3?fromDate=2025-06-23&toDate=2025-06-23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"expense",
+						"category",
+						"3"
+					],
+					"query": [
+						{
+							"key": "fromDate",
+							"value": "2025-06-23"
+						},
+						{
+							"key": "toDate",
+							"value": "2025-06-23"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User Current Month Expense By Category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYW5kb211c2VyIiwiaWF0IjoxNzUwNjYyNjg0LCJleHAiOjE3NTA3NDkwODR9.Jh-tCgM2SeiKYzeopVQ5atFqdmKL3JK2dlWaiBjGvzvXN_RuX4lyNbsFYqNDEs6D9GEOuyog4MBRT9KZE9FlEQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/api/expense/currentmonth/category/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"api",
+						"expense",
+						"currentmonth",
+						"category",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
