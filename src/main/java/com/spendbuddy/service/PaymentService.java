@@ -34,8 +34,5 @@ public class PaymentService {
 		type.setType(request.getType());
 		type.setActive(request.isActive());
 		return repository.save(type);
-		 
 	}
-	
-
 }

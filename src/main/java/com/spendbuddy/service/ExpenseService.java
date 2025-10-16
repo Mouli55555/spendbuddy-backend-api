@@ -132,4 +132,39 @@ public class ExpenseService {
 		return repository.listExpenseCurrentMonthByCategory(user.getId(), categoryId, month, year);
 	}
 
+	public void deleteExpense(UserDetails userDetails, Long expenseId) {
+		User user = userRepository.findByUsername(userDetails.getUsername())
+				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + userDetails.getUsername()));
+
+		Expense expense = repository.findById(expenseId)
+				.orElseThrow(() -> new EntityException("Expense not found for id: " + expenseId));
+
+		repository.deleteByIdAndUserId(expenseId, user.getId());
+	}
+
+	public Expense updateExpense(UserDetails userDetails, Long expenseId, ExpenseRequest request) throws Exception {
+		User user = userRepository.findByUsername(userDetails.getUsername())
+				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + userDetails.getUsername()));
+
+		Expense expense = repository.findById(expenseId)
+				.orElseThrow(() -> new EntityException("Expense not found for id: " + expenseId));
+
+		Category category = categoryRepository.findById(request.getCategoryId())
+				.orElseThrow(() -> new Exception("Category not found"));
+		SubCategory subCategory = subCategoryRepository.findById(request.getSubCategoryId())
+				.orElseThrow(() -> new Exception("Sub Category not found"));
+		PaymentType paymentType = paymentTypeRepository.findById(request.getPaymentId())
+				.orElseThrow(() -> new Exception("Payment Type not found"));
+
+		expense.setCategory(category);
+		expense.setSubCategoryId(subCategory);
+		expense.setPayment(paymentType);
+		expense.setExpenseAmount(request.getAmount());
+		expense.setExpenseDate(request.getExpenseDate());
+		expense.setExpenseDescription(request.getExpenseDescription());
+
+		return repository.save(expense); //
+	}
+
+
 }

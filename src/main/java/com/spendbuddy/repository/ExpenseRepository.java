@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.spendbuddy.entity.expensetracker.Expense;
 import com.spendbuddy.response.dto.ExpenseResponse;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -32,6 +34,15 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 	
 	@Query("select new com.spendbuddy.response.dto.ExpenseResponse(ex.id,ex.expenseAmount,ex.expenseDescription,c.name,subCat.name,p.type,ex.createdAt,ex.updatedAt,ex.expenseDate) from Expense ex INNER JOIN Category c ON ex.category.id = c.id INNER JOIN SubCategory subCat ON ex.subCategoryId.id = subCat.id INNER JOIN PaymentType p ON  ex.payment.id = p.id where c.user.id = :userId and c.id = :categoryId and year(ex.createdAt) = :year and month(ex.createdAt) = :month ORDER BY ex.id desc")
 	List<ExpenseResponse> listExpenseCurrentMonthByCategory(@Param("userId") Long userId, @Param("categoryId") Long categoryId,@Param("month") int month,@Param("year") int year);
+
+	@Transactional
+	@Modifying
+	@Query("DELETE FROM Expense ex WHERE ex.id = :expenseId AND ex.category.user.id = :userId")
+	void deleteByIdAndUserId(@Param("expenseId") Long expenseId, @Param("userId") Long userId);
+
+
+
+
 }
 
 
