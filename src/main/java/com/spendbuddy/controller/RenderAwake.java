@@ -13,6 +13,7 @@ public class RenderAwake {
     @GetMapping("/wakeup")
     public String renderServiceNowTriger(){
         return "BackendAwake";
+        System.out.println("Backend is ready to serve");
     }
 
 }
